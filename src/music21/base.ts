@@ -23,6 +23,7 @@ import * as duration from './duration';
 import * as editorial from './editorial';
 import * as prebase from './prebase';
 import * as sites from './sites';
+import * as style from './style';
 
 // imports for typing only
 import { Stream, Measure } from './stream';
@@ -67,6 +68,7 @@ export class Music21Object extends prebase.ProtoM21Object {
     id: number|string = 0;
     groups: string[] = []; // custom object in m21p
     sites: sites.Sites;
+    style: style.Style;
     isMusic21Object: boolean = true;
     isStream: boolean = false;
     // beat, measureNumber, etc.
@@ -77,6 +79,7 @@ export class Music21Object extends prebase.ProtoM21Object {
         this._duration = new duration.Duration(0.0);
         this.id = sites.getId(this);
         this.sites = new sites.Sites();
+        this.style = new style.Style();
         this._cloneCallbacks._activeSite = false;
         this._cloneCallbacks._activeSiteStoredOffset = false;
         this._cloneCallbacks._derivation = function Music21Music21Object_cloneCallbacks_derivation(
@@ -504,7 +507,7 @@ export class Music21Object extends prebase.ProtoM21Object {
         } catch (AttributeError) {
             throw new StreamException('to put a non Music21Object in a stream, '
             + 'create a music21.ElementWrapper for the item');
-            
+
         }
         for (let i = 0; i < numberOfTimes; i++) {
             this.append(item.clone(true));

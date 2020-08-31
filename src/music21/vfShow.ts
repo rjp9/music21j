@@ -130,7 +130,7 @@ export class Renderer {
     vfTuplets = [];
     // measureFormatters = [];
 
-    constructor(s, div=undefined, where=undefined) {
+    constructor(s, div?, where?) {
         this.stream = s;
         // this.streamType = s.classes[-1];
         if (div !== undefined) {
@@ -350,7 +350,7 @@ export class Renderer {
      * @returns {Vex.Flow.Stave} staff to return too
      * (also changes the `stack` parameter and runs `makeNotation` on s)
      */
-    prepareFlat(s, stack, optionalStave=undefined, optional_renderOp=undefined) {
+    prepareFlat(s, stack, optionalStave?, optional_renderOp?) {
         s.makeNotation();
         let stave;
         if (optionalStave !== undefined) {
@@ -381,7 +381,7 @@ export class Renderer {
      * to {@link music21.vfShow.Renderer#newStave} and {@link music21.vfShow.Renderer#setClefEtc}
      * @returns {Vex.Flow.Stave} stave
      */
-    renderStave(m=undefined, optional_rendOp=undefined) {
+    renderStave(m?, optional_rendOp?) {
         if (m === undefined) {
             m = this.stream;
         }
@@ -547,7 +547,7 @@ export class Renderer {
      * @param {boolean} [autoBeam=measures[0].autoBeam]
      * @returns {Vex.Flow.Formatter}
      */
-    formatVoiceGroup(stack, autoBeam: boolean =undefined) {
+    formatVoiceGroup(stack, autoBeam?: boolean) {
         // formats a group of voices to use the same formatter; returns the formatter
         // if autoBeam is true then it will apply beams for each voice and put them in
         // this.beamGroups;
@@ -909,7 +909,7 @@ export class Renderer {
      * @returns {Array<Vex.Flow.TextNote>}
      */
     vexflowLyrics(s, stave) {
-        const getTextNote = (text, font, d, lyricObj=undefined) => {
+        const getTextNote = (text, font, d, lyricObj?) => {
             // console.log(text, font, d);
             // noinspection TypeScriptValidateJSTypes
             const t1 = new Vex.Flow.TextNote({
