@@ -479,6 +479,9 @@ export class NotRest extends GeneralNote {
 export class Note extends NotRest {
     static get className() { return 'music21.note.Note'; }
 
+    // added rjp9
+    private mymetadata: any;
+
     // noinspection JSUnusedGlobalSymbols
     isNote: boolean = true;
     isRest: boolean = false;
@@ -675,6 +678,8 @@ export class Note extends NotRest {
             duration: vfd,
             stem_direction: vfnStemDirection,
         });
+        // added rjp
+        vfn.mymetadata = this.mymetadata;
         this.vexflowAccidentalsAndDisplay(vfn, { clef }); // clean up stuff...
         if (this.pitch.accidental !== undefined) {
             if (
